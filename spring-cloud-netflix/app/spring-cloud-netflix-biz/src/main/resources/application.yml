@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: scn-cloud-netflix-biz
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+
+server:
+  servlet:
+    context-path: /rest
+  port: 8081
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8765/eureka
+    healthcheck:
+      enabled: true
+
+app:
+  service-url: http://scn-cloud-netflix-service/service
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+  service:
+    spring-cloud-netflix-api: http://scn-cloud-netflix-service/service
+
+logging:
+  file: log4j2.xml

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: scn-cloud-netflix-service
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+
+server:
+  servlet:
+    context-path: /service
+  port: 8082
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8765/eureka
+    healthcheck:
+      enabled: true
+
+logging:
+  file: log4j2.xml
