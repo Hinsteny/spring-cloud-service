@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: scn-cloud-alibaba-service
+
+dubbo:
+  application:
+    name: scn-cloud-alibaba-dubbo-service
+    qosEnable: false
+  scan:
+    basePackages: org.hinsteny.sca.service
+  registry:
+    id: hinsteny-zk-registry
+    address: zookeeper://127.0.0.1:2181
+  protocol:
+    name: dubbo
+    port: 12345
+
+logging:
+  file: log4j2.xml

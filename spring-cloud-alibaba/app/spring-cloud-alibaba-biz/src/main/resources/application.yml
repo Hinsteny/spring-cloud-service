@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: scn-cloud-alibaba-biz
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+
+server:
+  servlet:
+    context-path: /
+  port: 8081
+
+
+dubbo:
+  application:
+    name: scn-cloud-alibaba-dubbo-biz
+    version: 1.0.0
+    qosEnable: false
+  registry:
+    id: hinsteny-zk-registry
+    address: zookeeper://127.0.0.1:2181
+  protocol:
+    name: dubbo
+    port: 12345
+
+logging:
+  file: log4j2.xml
