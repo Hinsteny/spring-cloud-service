@@ -7,7 +7,7 @@ spring:
 
 server:
   servlet:
-    context-path: /service
+    context-path: /
   port: 8082
 
 eureka:

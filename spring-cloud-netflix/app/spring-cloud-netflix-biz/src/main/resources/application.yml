@@ -7,7 +7,7 @@ spring:
 
 server:
   servlet:
-    context-path: /rest
+    context-path: /
   port: 8081
 
 eureka:
@@ -18,7 +18,7 @@ eureka:
       enabled: true
 
 app:
-  service-url: http://scn-cloud-netflix-service/service
+  service-url: http://scn-cloud-netflix-service/
 
 feign:
   client:
@@ -27,8 +27,24 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: basic
+  hystrix:
+    enabled: false
   service:
-    spring-cloud-netflix-api: http://scn-cloud-netflix-service/service
+    spring-cloud-netflix-api: http://scn-cloud-netflix-service/
+
+# To set thread isolation to SEMAPHORE
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
 
 logging:
   file: log4j2.xml

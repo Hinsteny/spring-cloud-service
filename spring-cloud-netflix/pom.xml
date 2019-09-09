@@ -28,6 +28,9 @@
     <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
     <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
 
+    <!-- third common dependency version -->
+    <fastjson.version>1.2.58</fastjson.version>
+
   </properties>
 
   <modules>
@@ -61,8 +64,13 @@
         <version>${project.version}</version>
       </dependency>
 
-
       <!-- /project model dependency  -->
+      <!-- third common dependency  -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+      </dependency>
 
     </dependencies>
   </dependencyManagement>

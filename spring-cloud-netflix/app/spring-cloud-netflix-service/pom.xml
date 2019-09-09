@@ -21,8 +21,7 @@
       <groupId>org.hinsteny.spring</groupId>
       <artifactId>spring-cloud-netflix-api</artifactId>
     </dependency>
-
-
+    
     <!-- /project model dependency  -->
 
     <!-- spring-cloud dependency  -->
