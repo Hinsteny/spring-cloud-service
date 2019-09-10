@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version UserController: 2019-09-04 18:50 All rights reserved.$
  */
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -20,7 +22,7 @@ public class UserController {
     @Reference(version = "1.0.0")
     private UserFacade userFacade;
 
-    @GetMapping("/user/{name}")
+    @GetMapping("/{name}")
     public String sayHelloWorldToDubbo(@PathVariable("name") String name) {
         logger.info("sayHelloWorldToDubbo");
         return userFacade.hello(name);

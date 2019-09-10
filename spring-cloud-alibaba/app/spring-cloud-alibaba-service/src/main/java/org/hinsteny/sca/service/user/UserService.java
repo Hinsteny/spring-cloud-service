@@ -1,5 +1,6 @@
 package org.hinsteny.sca.service.user;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import org.apache.dubbo.config.annotation.Service;
 import org.hinsteny.sca.api.facade.UserFacade;
 import org.hinsteny.sca.api.vos.QueryUserInfoReq;
@@ -45,4 +46,5 @@ public class UserService implements UserFacade {
     public QueryUserInfoResp queryUserInfo(QueryUserInfoReq queryUserInfoReq) {
         return null;
     }
+
 }

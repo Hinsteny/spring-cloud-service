@@ -32,6 +32,7 @@
 
     <!-- third important dependency version -->
     <dubbo.version>2.7.3</dubbo.version>
+    <nacos-config-spring-boot-starter.version>0.2.3</nacos-config-spring-boot-starter.version>
 
     <!-- third common dependency version -->
     <fastjson.version>1.2.58</fastjson.version>
@@ -51,14 +52,6 @@
         <groupId>org.hinsteny.spring</groupId>
         <artifactId>spring-cloud-alibaba-api</artifactId>
         <version>${version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.alibaba.cloud</groupId>
-        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-        <version>2.1.0.RELEASE</version>
-        <type>pom</type>
-        <scope>import</scope>
       </dependency>
 
       <!-- /project model dependency  -->
@@ -81,6 +74,24 @@
         <groupId>org.apache.dubbo</groupId>
         <artifactId>dubbo-spring-boot-starter</artifactId>
         <version>${dubbo.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-configcenter-nacos</artifactId>
+        <version>${dubbo.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-registry-nacos</artifactId>
+        <version>${dubbo.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.alibaba.boot</groupId>
+        <artifactId>nacos-config-spring-boot-starter</artifactId>
+        <version>${nacos-config-spring-boot-starter.version}</version>
       </dependency>
 
       <!-- third common dependency  -->
