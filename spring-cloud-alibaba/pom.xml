@@ -80,6 +80,12 @@
         <groupId>org.apache.dubbo</groupId>
         <artifactId>dubbo-configcenter-nacos</artifactId>
         <version>${dubbo.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
       <dependency>

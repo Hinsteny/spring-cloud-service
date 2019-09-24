@@ -5,7 +5,7 @@ spring:
 dubbo:
   application:
     name: scn-cloud-alibaba-dubbo-service
-    qosEnable: false
+    qosEnable: falseu
   scan:
     basePackages: org.hinsteny.sca.service
   registry:

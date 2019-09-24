@@ -5,11 +5,16 @@ spring:
     template-loader-path: classpath:/templates/
     prefer-file-system-access: false
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,loggers
+
 server:
   servlet:
     context-path: /
   port: 8081
-
 
 dubbo:
   application:
