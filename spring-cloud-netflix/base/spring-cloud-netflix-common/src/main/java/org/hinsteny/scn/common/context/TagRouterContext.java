@@ -6,6 +6,6 @@ package org.hinsteny.scn.common.context;
  */
 public interface TagRouterContext {
 
-  String SPRING_CLOUD_TAG_KEY = "http.spring.cloud.tag";
+  String SPRING_CLOUD_TAG_KEY = "http-spring-cloud-tag";
 
 }

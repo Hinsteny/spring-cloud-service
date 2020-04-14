@@ -16,6 +16,9 @@ eureka:
       defaultZone: http://localhost:8765/eureka
     healthcheck:
       enabled: true
+  instance:
+    metadata-map:
+      http-spring-cloud-tag: gray
 
 logging:
   file: log4j2.xml

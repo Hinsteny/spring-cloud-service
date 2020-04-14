@@ -44,9 +44,9 @@ public class UserController {
     private UserFacade userFacade;
 
     /** simple http get request with ribbon and feign **/
-    @GetMapping("/ribbon/user/{name}")
+    @GetMapping("/template/user/{name}")
     @HystrixCommand(fallbackMethod = "fallbackMethod")
-    public String sayHelloWorldInRibbon(@PathVariable("name") String name) {
+    public String sayHelloWorldInTemplate(@PathVariable("name") String name) {
         String res = this.restTemplate.getForObject(serviceUtl + "/user/hello?userName={userName}", String.class, name);
         return res;
     }
@@ -82,8 +82,8 @@ public class UserController {
         return "fallback for " + name;
     }
 
-    @GetMapping("/ribbon/gray")
-    public void grayWhile() throws Exception {
+    @GetMapping("/feign/ribbon/gray")
+    public void feignGrayWhile() throws Exception {
         String message = "";
         // do while
         while (true) {
@@ -94,6 +94,24 @@ public class UserController {
             RequestContextHolder.getRequestAttributes().setAttribute(TagRouterContext.SPRING_CLOUD_TAG_KEY,
               "gray", SCOPE_REQUEST);
             message = "[Online With Tag]" + userFacade.hello("spring-cloud-grey");
+            logger.info(message);
+            logger.info("======================================");
+            Thread.sleep(1000 * 10);
+        }
+    }
+
+    @GetMapping("/template/ribbon/gray")
+    public void templateGrayWhile() throws Exception {
+        String message = "";
+        // do while
+        while (true) {
+            RequestContextHolder.getRequestAttributes().removeAttribute(TagRouterContext.SPRING_CLOUD_TAG_KEY,
+              SCOPE_REQUEST);
+            message = "[Online No Tag]" + this.sayHelloWorldInTemplate("spring-cloud");
+            logger.info(message);
+            RequestContextHolder.getRequestAttributes().setAttribute(TagRouterContext.SPRING_CLOUD_TAG_KEY,
+              "gray", SCOPE_REQUEST);
+            message = "[Online With Tag]" + this.sayHelloWorldInTemplate("spring-cloud-grey");
             logger.info(message);
             logger.info("======================================");
             Thread.sleep(1000 * 10);
