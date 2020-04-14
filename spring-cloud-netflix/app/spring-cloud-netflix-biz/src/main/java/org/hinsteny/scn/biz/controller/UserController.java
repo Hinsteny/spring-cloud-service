@@ -1,11 +1,14 @@
 package org.hinsteny.scn.biz.controller;
 
+import static org.springframework.web.context.request.RequestAttributes.SCOPE_REQUEST;
+
 import com.alibaba.fastjson.JSON;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.hinsteny.scn.api.facade.UserFacade;
 import org.hinsteny.scn.api.vos.QueryUserInfoReq;
 import org.hinsteny.scn.api.vos.QueryUserInfoResp;
 import org.hinsteny.scn.api.vos.UserHelloReq;
+import org.hinsteny.scn.common.context.TagRouterContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
 
 /**
  * @author Hinsteny
@@ -76,6 +80,24 @@ public class UserController {
     /** hystrix fallback default method **/
     public String fallbackMethod(String name) {
         return "fallback for " + name;
+    }
+
+    @GetMapping("/ribbon/gray")
+    public void grayWhile() throws Exception {
+        String message = "";
+        // do while
+        while (true) {
+            RequestContextHolder.getRequestAttributes().removeAttribute(TagRouterContext.SPRING_CLOUD_TAG_KEY,
+              SCOPE_REQUEST);
+            message = "[Online No Tag]" + userFacade.hello("spring-cloud");
+            logger.info(message);
+            RequestContextHolder.getRequestAttributes().setAttribute(TagRouterContext.SPRING_CLOUD_TAG_KEY,
+              "gray", SCOPE_REQUEST);
+            message = "[Online With Tag]" + userFacade.hello("spring-cloud-grey");
+            logger.info(message);
+            logger.info("======================================");
+            Thread.sleep(1000 * 10);
+        }
     }
 
 }

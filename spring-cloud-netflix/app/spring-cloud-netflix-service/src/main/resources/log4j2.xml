@@ -38,7 +38,7 @@
   </Appenders>
 
   <Loggers>
-    <Logger name="org.apache" level="error" additivity="true">
+    <!--<Logger name="org.apache" level="error" additivity="true">
       <AppenderRef ref="FILE-ERROR"/>
     </Logger>
 
@@ -68,7 +68,7 @@
 
     <Logger name="org.hinsteny.scn" level="debug" additivity="true">
       <AppenderRef ref="FILE-INFO"/>
-    </Logger>
+    </Logger>-->
 
     <Root level="debug">
       <AppenderRef ref="STDOUT"/>

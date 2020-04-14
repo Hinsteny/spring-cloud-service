@@ -70,7 +70,7 @@
       <AppenderRef ref="FILE-INFO"/>
     </Logger>
 
-    <Root level="debug">
+    <Root level="info">
       <AppenderRef ref="STDOUT"/>
       <AppenderRef ref="FILE-INFO"/>
     </Root>

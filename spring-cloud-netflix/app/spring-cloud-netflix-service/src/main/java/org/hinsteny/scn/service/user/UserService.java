@@ -4,6 +4,7 @@ import org.hinsteny.scn.api.facade.UserFacade;
 import org.hinsteny.scn.api.vos.QueryUserInfoReq;
 import org.hinsteny.scn.api.vos.QueryUserInfoResp;
 import org.hinsteny.scn.api.vos.UserHelloReq;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -13,12 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserService implements UserFacade {
 
+    @Value("${server.port}")
+    private int serverPort;
+
     /**
      * say hello
      */
     @Override
     public String hello(String userName) {
-        return String.format("hello, %s!", userName);
+        return serverPort + String.format(" hello, %s!", userName);
     }
 
     /**
