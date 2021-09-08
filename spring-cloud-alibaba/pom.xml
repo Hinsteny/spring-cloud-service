@@ -31,7 +31,7 @@
     <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
 
     <!-- third important dependency version -->
-    <dubbo.version>2.7.3</dubbo.version>
+    <dubbo.version>2.7.13</dubbo.version>
     <nacos-config-spring-boot-starter.version>0.2.3</nacos-config-spring-boot-starter.version>
 
     <!-- third common dependency version -->
